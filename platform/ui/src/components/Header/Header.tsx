@@ -37,24 +37,6 @@ function Header({
         <div className="flex items-center">
           {/* // TODO: Should preserve filter/sort
               // Either injected service? Or context (like react router's `useLocation`?) */}
-          <div
-            className={classNames(
-              'mr-3 inline-flex items-center',
-              isReturnEnabled && 'cursor-pointer'
-            )}
-            onClick={onClickReturn}
-            data-cy="return-to-work-list"
-          >
-            {isReturnEnabled && (
-              <Icon
-                name="chevron-left"
-                className="text-primary-active w-8"
-              />
-            )}
-            <div className="ml-4">
-              {WhiteLabeling?.createLogoComponentFn?.(React, props) || <Svg name="logo-ohif" />}
-            </div>
-          </div>
         </div>
         <div className="flex items-center">{children}</div>
         <div className="flex items-center">
