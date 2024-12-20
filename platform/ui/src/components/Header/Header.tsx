@@ -47,9 +47,13 @@ function Header({
             onClick={onClickReturn}
             data-cy="return-to-work-list"
           >
-            {isReturnEnabled && <Icons.ChevronClosed className="text-primary-active w-8" />}
-            <div className="ml-1">
-              {WhiteLabeling?.createLogoComponentFn?.(React, props) || <Icons.OHIFLogo />}
+            {/* {isReturnEnabled && <Icons.ChevronClosed className="text-primary-active w-8" />} */}
+            <div
+              className="ml-9"
+              style={{ color: 'white' }}
+            >
+              {/* {WhiteLabeling?.createLogoComponentFn?.(React, props) || <Icons.OHIFLogo />} */}
+              BiRAT
             </div>
           </div>
         </div>

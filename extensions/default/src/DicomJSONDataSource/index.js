@@ -77,7 +77,15 @@ function createDicomJSONApi(dicomJsonConfig) {
       }
 
       const response = await fetch(url);
+      const token = `${url.split('token=')[1]}`;
       const data = await response.json();
+      data.studies.forEach(study => {
+        study.series.forEach(series => {
+          series.instances.forEach(instance => {
+            instance.url = `${instance.url}?token=${token}`;
+          });
+        });
+      });
 
       let StudyInstanceUID;
       let SeriesInstanceUID;
