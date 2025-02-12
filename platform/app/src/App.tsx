@@ -162,13 +162,53 @@ function App({
     );
   }
 
-  return (
+  // Access Control: Check if app is embedded in an iframe
+  const isEmbedded = window.self !== window.top;
+
+  // Restricted Access Message
+  const RestrictedAccessMessage = () => (
+    <div
+      style={{
+        backgroundColor: '#ffcccc',
+        color: '#212529',
+        padding: '20px',
+        height: '100vh',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        fontFamily: 'Arial, sans-serif',
+      }}
+    >
+      <div
+        style={{
+          backgroundColor: '#fff',
+          border: '1px solid #dee2e6',
+          boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+          borderRadius: '10px',
+          padding: '40px 30px',
+          maxWidth: '450px',
+          textAlign: 'center',
+          transition: 'transform 0.3s ease',
+        }}
+      >
+        <div style={{ fontSize: '50px', color: '#dc3545', marginBottom: '15px' }}>🚫</div>
+        <h2 style={{ color: '#343a40', marginBottom: '10px' }}>Restricted Access</h2>
+        <p style={{ fontSize: '16px', color: '#6c757d' }}>
+          This application is available to authorized users only.
+        </p>
+      </div>
+    </div>
+  );
+
+  return isEmbedded ? (
     <CombinedProviders>
       <BrowserRouter basename={routerBasename}>
         {authRoutes}
         {appRoutes}
       </BrowserRouter>
     </CombinedProviders>
+  ) : (
+    <RestrictedAccessMessage />
   );
 }
 
